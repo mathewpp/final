@@ -1,0 +1,116 @@
+USE mathewp;
+
+DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS Tweets;
+DROP TABLE IF EXISTS Follows;
+DROP TABLE IF EXISTS Favorites;
+DROP TABLE IF EXISTS Lists;
+DROP TABLE IF EXISTS List_Info;
+DROP TABLE IF EXISTS Retweets;
+DROP TABLE IF EXISTS Reply;
+DROP TABLE IF EXISTS DirectMessages;
+
+ CREATE TABLE Users (
+   User_id INT NOT NULL AUTO_INCREMENT,
+   UserName VARCHAR(12) NOT NULL UNIQUE,
+   Password VARCHAR(12) NOT NULL,
+   Email VARCHAR(40),
+   Name VARCHAR(40),
+   PRIMARY KEY ( User_id )
+);
+
+Users(User_id, Email, UserName, Password) 
+     ---------
+
+Tweets(Tweet_id, User_id, Timestamp, Content)
+	   --------- 
+	   
+ CREATE TABLE Tweets (
+   Tweet_id INT NOT NULL AUTO_INCREMENT,
+   User_id INT NOT NULL  REFERENCES Users(User_id) ON DELETE CASCADE,
+   Create_time Timestamp  DEFAULT CURRENT_TIMESTAMP,
+   Content VARCHAR(132) NOT NULL,
+   PRIMARY KEY ( Tweet_id )
+);	   
+	   
+insert into Tweets values ()	   
+
+
+
+Follows(Followed, Follower)
+        --------  -------- 
+        
+CREATE TABLE Follows (
+	Followed INT NOT NULL REFERENCES Users(User_id) ON DELETE CASCADE,
+	Follower INT NOT NULL REFERENCES Users(User_id) ON DELETE CASCADE,
+	PRIMARY KEY ( Followed, Follower)
+);
+        
+
+Favorites(User_id, Tweet_id)
+          -------  ---------
+
+CREATE TABLE Favorites (
+	User_id INT NOT NULL REFERENCES Users(User_id) ON DELETE CASCADE,
+	Tweet_id INT NOT NULL REFERENCES Tweets(Tweet_id) ON DELETE CASCADE,
+	PRIMARY KEY ( User_id, Tweet_id)
+);
+
+
+Lists(List_id, User_id, List_name, Description) 
+       ------- -------   
+
+CREATE TABLE Lists (
+	List_id INT NOT NULL AUTO_INCREMENT,
+	User_id INT NOT NULL  REFERENCES Users(User_id) ON DELETE CASCADE,
+	List_name VARCHAR(10) NOT NULL,
+	Description VARCHAR(20),
+	PRIMARY KEY ( List_id, User_id)
+);
+
+
+
+List_Info(List_id, User_id)
+          -------  -------
+          
+CREATE TABLE Favorites (
+	List_id INT NOT NULL REFERENCES Lists(List_id) ON DELETE CASCADE,
+	User_id INT NOT NULL REFERENCES Users(User_id) ON DELETE CASCADE,
+	PRIMARY KEY ( List_id, User_id)
+);
+          
+          
+
+Retweets(User_id, Tweet_id)                   
+         -------   -------- 
+         
+CREATE TABLE Retweets (
+	User_id INT NOT NULL REFERENCES Users(User_id) ON DELETE CASCADE,
+	Tweet_id INT NOT NULL REFERENCES Tweets(Tweets_id) ON DELETE CASCADE,
+	PRIMARY KEY ( User_id, Tweet_id)
+);
+                   
+         
+Reply(Reply_id,  User_id, Tweet_id, Timestamp, Message)
+      ---------  
+      
+ CREATE TABLE Reply (
+   Reply_id INT NOT NULL AUTO_INCREMENT,
+   User_id INT NOT NULL  REFERENCES Users(User_id) ON DELETE CASCADE,
+   Tweet_id INT NOT NULL REFERENCES Tweets(Tweets_id) ON DELETE CASCADE,
+   Create_time Timestamp  DEFAULT CURRENT_TIMESTAMP,
+   Message VARCHAR(132) NOT NULL,
+   PRIMARY KEY ( Reply_id )
+);	                    
+        
+DirectMessages(Message_id, Sender_id, Receiver_id, Timestamp, Message)        
+               ----------   
+               
+CREATE TABLE Reply (
+   Message_id INT NOT NULL AUTO_INCREMENT,
+   Sender_id INT NOT NULL  REFERENCES Users(User_id) ON DELETE CASCADE,
+   Receiver_id INT NOT NULL  REFERENCES Users(User_id) ON DELETE CASCADE,
+   Create_time Timestamp  DEFAULT CURRENT_TIMESTAMP,
+   VARCHAR(132) NOT NULL,
+   PRIMARY KEY ( Reply_id )
+);	                  

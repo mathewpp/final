@@ -1,0 +1,41 @@
+<h2>Join Twitter Today!!!</h2>
+
+<% if @user.errors.any? %>
+<ul>
+	<% @user.errors.full_messages.each do |attr, msg| %>
+	<li>
+		<font color="red"><%= "#{attr} #{msg}" if @user.errors[attr].first == msg %></font>
+	</li>	
+	<% end %>
+</ul>	
+<% end %>
+
+<%= form_tag "/user" do %>
+
+<div class="user_register_section">
+   <label >Name:</label>
+   <input type="text" name="name" placeholder="Full Name" size="40" value="<%= @user.name %>">
+</div>        
+<div class="user_register_section">
+	<label>UserId:</label>
+   <input type="text" name="user_name" placeholder="Username" size="40" value="<%= @user.user_name %>">
+</div>
+<div class="user_register_section">        
+	<label>Password:</label>
+   <input type="password" name="password" placeholder="Password" size="40" value="<%= @user.password %>">
+</div>
+<div class="user_register_section">        
+	<label>Photo:</label>
+   <input type="text" name="photo_url" placeholder="Photo Url" size="40" value="<%= @user.photo_url %>">
+</div>
+
+<div class="user_register_section">        
+	<label>Email:</label>
+   <input type="text" name="email" placeholder="Email" size="40" value="<%= @user.email %>">
+</div>
+<div class="user_register_section">        
+   <input type="submit" value="Submit">
+</div>
+</form>
+
+<% end %>

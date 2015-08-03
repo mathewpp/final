@@ -1,0 +1,29 @@
+<div class="movie">
+  <h2><%= @movie.title %></h2>
+
+  <p>
+    <span class="rating">Rated <%= @movie.rated %></span>
+    <%= @movie.runtime %>
+  </p>
+
+  <%= image_tag @movie.poster_url %>
+
+  <h3>Directed by: <%= @movie.director.name %></h3>
+
+  <p><%= @movie.plot %></p>
+
+  <h3>Cast</h3>
+  <!-- CHALLENGE #3: Show the actors here (hint: investigate the Role model) -->
+  <ul>
+    <% @movie.actors.each do |actor| %>
+      <li>
+        <%= actor.name %>
+      </li>
+    <% end %>
+  </ul>
+
+
+
+
+
+</div>

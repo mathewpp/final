@@ -1,0 +1,10 @@
+<h1>Tweets</h1>
+
+<!-- CHALLENGE #4: Sort alphabetically -->
+<ul>
+<% @users.each do |user| %>
+<li>@<%= user.user_name %> 
+	<%= link_to "(follow)", "/users/#{user.id}/follow" %>&nbsp;
+</li>
+<% end %>
+</ul>

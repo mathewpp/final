@@ -1,0 +1,93 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+label {
+    display:inline-block;
+    float: left;
+    padding-top: 5px;
+    padding-right: 15px;
+    text-align: right;
+    width: 140px;
+}
+
+.home_left_section {
+    width:250px;
+    height:200px;
+    float:left;
+    padding:10px; 
+}
+
+.home_center_section {
+    width:250px;
+    height:200px;
+    float:center;
+    padding:10px; 
+}
+
+.home_right_section {
+    width:250px;
+    height:200px;
+    float:right;	
+    padding:10px; 
+    background-color:skyblue;
+}
+
+.user_register_section {
+	margin-left: 200px;
+    float:middle;	
+    padding:10px; 
+}
+
+
+p {
+  font-size: 18px;
+}
+
+nav h1 {
+  background: #009;
+  color: white;
+  padding: 12px;
+}
+
+nav a, nav a:visited {
+ text-decoration: none;
+ color: white;
+}
+
+h2 {
+ color: black;
+}
+
+.rating {
+ color: gray;
+ border: solid 1px gray;
+ padding: 4px;
+}
+
+img {
+ float: left;
+ margin-right: 40px;
+ box-shadow: 8px 8px 4px gray;
+ width: "300px";
+}
+p {
+ margin-top: 24px;
+ margin-bottom: 24px;
+}
+
+.movie {
+  width: 50%;
+}

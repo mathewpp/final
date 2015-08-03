@@ -1,0 +1,53 @@
+User
+  user_name: string
+  password: string
+  email: string
+  name: string
+  photo_url: string
+
+Tweet
+ user_id: integer
+ content: text
+ photo_url: string
+ create_time: datetime  default current_timestamp
+
+Follow
+  followed: integer Users(User_id) ON DELETE CASCADE,
+  follower: integer Users(User_id) ON DELETE CASCADE,
+
+Favorite
+  user_id: integer
+  tweet_id: integer
+
+List
+  list_id: integer
+  user_id: integer
+  list_name: string
+  description: string 
+
+List_Info
+  list_id: integer
+  user_id: integer
+
+Retweet
+  user_id: integer
+  tweet_id: integer
+
+Reply
+  reply_id: integer
+  user_id: integer
+  tweet_id: integer
+  create_time: datetime
+
+DirectMessage
+  message_id: integer
+  sender_id: integer
+  receiver_id: integer
+  create_time: datetime
+  message: text
+
+Reply
+   message_id: integer
+   sender_id: integer
+   receiver_id: integer
+   create_time: datetime

@@ -1,0 +1,11 @@
+<h1>Tweets (in development!!! lets delete edit and delete of any tweets.</h1>
+
+<!-- CHALLENGE #4: Sort alphabetically -->
+<ul>
+<% @tweets.each do |tweet| %>
+<li><%= tweet.content %> 
+	<%= link_to "(edit)", "/tweets/#{tweet.id}/edit" %>&nbsp;
+	<%= link_to "(delete)", "/tweets/#{tweet.id}" , :method => "delete" %>
+</li>
+<% end %>
+</ul>

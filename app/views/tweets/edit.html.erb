@@ -1,0 +1,13 @@
+<style>
+  label { width: 100px; vertical-align: middle;}
+</style>
+
+<h2>Edit your tweet</h2>
+
+<%= form_tag "/tweets/#{@tweet.id}", :method => "patch" do %>
+<div class="home_left_section">
+  	<textarea name="tweet" cols="50" rows="4"><%= @tweet.content %></textarea>
+  	<input type="text" name="photo_url" value="<%= @tweet.photo_url %>" size="80">
+  	<button>Submit</button>
+  </div>
+<% end %>

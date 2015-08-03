@@ -1,0 +1,23 @@
+[
+{
+"user_name":"test",
+"password":"test",
+"email":"test@twitter.com",
+"photo_url":"/bird.gif",
+"name":"Test User"
+},
+{
+"user_name":"mit",
+"password":"mit",
+"email":"contact@mit.com",
+"photo_url":"https://pbs.twimg.com/profile_images/444141979631251457/MZyaowOb_bigger.png",
+"name":"MIT"
+},
+{
+"user_name":"cnn",
+"password":"cnn",
+"email":"contact@cnn.com",
+"photo_url":"https://pbs.twimg.com/profile_images/550063386914852865/4JHr5H_Y_bigger.jpeg",
+"name":"CNN"
+}
+]
