@@ -19,5 +19,11 @@
 "email":"contact@cnn.com",
 "photo_url":"https://pbs.twimg.com/profile_images/550063386914852865/4JHr5H_Y_bigger.jpeg",
 "name":"CNN"
+},
+{"user_name":"UChicago",
+"password":"uchicago",
+"email":"contact@uchicago.com",
+"photo_url":"https://pbs.twimg.com/profile_images/1113876768/twitter.image_bigger.jpg",
+"name":"UChicago"
 }
 ]
