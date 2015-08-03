@@ -22041,3 +22041,244 @@ Processing by TweetsController#index as HTML
   [1m[36mTweet Load (0.2ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
   Rendered tweets/index.html.erb within layouts/application (1.6ms)
 Completed 200 OK in 57ms (Views: 55.7ms | ActiveRecord: 0.2ms)
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "direct_messages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "message_id" integer, "sender_id" integer, "receiver_id" integer, "create_time" datetime, "message" text) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX "index_direct_messages_on_message_id" ON "direct_messages" ("message_id")[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_direct_messages_on_message_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_direct_messages_on_message_id' AND type='index'
+
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX "index_direct_messages_on_receiver_id" ON "direct_messages" ("receiver_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_direct_messages_on_receiver_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_direct_messages_on_receiver_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_direct_messages_on_message_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_direct_messages_on_message_id' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX "index_direct_messages_on_sender_id" ON "direct_messages" ("sender_id")
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "favorites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "tweet_id" integer) [0m
+  [1m[35m (1.0ms)[0m  CREATE  INDEX "index_favorites_on_tweet_id" ON "favorites" ("tweet_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_favorites_on_tweet_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_favorites_on_tweet_id' AND type='index'
+[0m
+  [1m[35m (1.0ms)[0m  CREATE  INDEX "index_favorites_on_user_id" ON "favorites" ("user_id")
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "follows" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "followed" integer DEFAULT 0, "follower" integer DEFAULT 0) [0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "list_infos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "list_id" integer, "user_id" integer) 
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX "index_list_infos_on_list_id" ON "list_infos" ("list_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_list_infos_on_list_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_list_infos_on_list_id' AND type='index'
+
+  [1m[36m (0.9ms)[0m  [1mCREATE  INDEX "index_list_infos_on_user_id" ON "list_infos" ("user_id")[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "lists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "list_id" integer, "user_id" integer, "list_name" varchar, "description" varchar) 
+  [1m[36m (0.8ms)[0m  [1mCREATE  INDEX "index_lists_on_list_id" ON "lists" ("list_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_lists_on_list_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_lists_on_list_id' AND type='index'
+
+  [1m[36m (0.8ms)[0m  [1mCREATE  INDEX "index_lists_on_user_id" ON "lists" ("user_id")[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "replies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "message_id" integer, "sender_id" integer, "receiver_id" integer, "create_time" datetime) 
+  [1m[36m (0.8ms)[0m  [1mCREATE  INDEX "index_replies_on_message_id" ON "replies" ("message_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_replies_on_message_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_replies_on_message_id' AND type='index'
+
+  [1m[36m (0.8ms)[0m  [1mCREATE  INDEX "index_replies_on_receiver_id" ON "replies" ("receiver_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_replies_on_receiver_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_replies_on_receiver_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_replies_on_message_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_replies_on_message_id' AND type='index'
+[0m
+  [1m[35m (0.8ms)[0m  CREATE  INDEX "index_replies_on_sender_id" ON "replies" ("sender_id")
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "retweets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "tweet_id" integer) [0m
+  [1m[35m (0.8ms)[0m  CREATE  INDEX "index_retweets_on_tweet_id" ON "retweets" ("tweet_id")
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_retweets_on_tweet_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_retweets_on_tweet_id' AND type='index'
+[0m
+  [1m[35m (1.3ms)[0m  CREATE  INDEX "index_retweets_on_user_id" ON "retweets" ("user_id")
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "tweets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "content" text, "photo_url" varchar, "create_time" datetime) [0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX "index_tweets_on_user_id" ON "tweets" ("user_id")
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_name" varchar, "password" varchar, "email" varchar, "photo_url" varchar, "name" varchar) [0m
+  [1m[35m (1.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "direct_messages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "message_id" integer, "sender_id" integer, "receiver_id" integer, "create_time" datetime, "message" text) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.0ms)[0m  CREATE  INDEX "index_direct_messages_on_message_id" ON "direct_messages" ("message_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_direct_messages_on_message_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_direct_messages_on_message_id' AND type='index'
+[0m
+  [1m[35m (1.0ms)[0m  CREATE  INDEX "index_direct_messages_on_receiver_id" ON "direct_messages" ("receiver_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_direct_messages_on_receiver_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_direct_messages_on_receiver_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_direct_messages_on_message_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_direct_messages_on_message_id' AND type='index'
+
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX "index_direct_messages_on_sender_id" ON "direct_messages" ("sender_id")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "favorites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "tweet_id" integer) 
+  [1m[36m (0.9ms)[0m  [1mCREATE  INDEX "index_favorites_on_tweet_id" ON "favorites" ("tweet_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_favorites_on_tweet_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_favorites_on_tweet_id' AND type='index'
+
+  [1m[36m (0.9ms)[0m  [1mCREATE  INDEX "index_favorites_on_user_id" ON "favorites" ("user_id")[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "follows" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "followed" integer DEFAULT 0, "follower" integer DEFAULT 0) 
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "list_infos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "list_id" integer, "user_id" integer) [0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX "index_list_infos_on_list_id" ON "list_infos" ("list_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_list_infos_on_list_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_list_infos_on_list_id' AND type='index'
+[0m
+  [1m[35m (0.8ms)[0m  CREATE  INDEX "index_list_infos_on_user_id" ON "list_infos" ("user_id")
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "lists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "list_id" integer, "user_id" integer, "list_name" varchar, "description" varchar) [0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX "index_lists_on_list_id" ON "lists" ("list_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_lists_on_list_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_lists_on_list_id' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX "index_lists_on_user_id" ON "lists" ("user_id")
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "replies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "message_id" integer, "sender_id" integer, "receiver_id" integer, "create_time" datetime) [0m
+  [1m[35m (0.8ms)[0m  CREATE  INDEX "index_replies_on_message_id" ON "replies" ("message_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_replies_on_message_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_replies_on_message_id' AND type='index'
+[0m
+  [1m[35m (0.8ms)[0m  CREATE  INDEX "index_replies_on_receiver_id" ON "replies" ("receiver_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_replies_on_receiver_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_replies_on_receiver_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_replies_on_message_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_replies_on_message_id' AND type='index'
+
+  [1m[36m (0.8ms)[0m  [1mCREATE  INDEX "index_replies_on_sender_id" ON "replies" ("sender_id")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "retweets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "tweet_id" integer) 
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX "index_retweets_on_tweet_id" ON "retweets" ("tweet_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_retweets_on_tweet_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_retweets_on_tweet_id' AND type='index'
+
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX "index_retweets_on_user_id" ON "retweets" ("user_id")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "tweets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "content" text, "photo_url" varchar, "create_time" datetime) 
+  [1m[36m (0.9ms)[0m  [1mCREATE  INDEX "index_tweets_on_user_id" ON "tweets" ("user_id")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_name" varchar, "password" varchar, "email" varchar, "photo_url" varchar, "name" varchar) 
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('0')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.2ms)[0m  DELETE FROM "tweets"
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = 'test' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("user_name", "password", "email", "photo_url", "name") VALUES (?, ?, ?, ?, ?)  [["user_name", "test"], ["password", "test"], ["email", "test@twitter.com"], ["photo_url", "/bird.gif"], ["name", "Test User"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = 'mit' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("user_name", "password", "email", "photo_url", "name") VALUES (?, ?, ?, ?, ?)  [["user_name", "mit"], ["password", "mit"], ["email", "contact@mit.com"], ["photo_url", "https://pbs.twimg.com/profile_images/444141979631251457/MZyaowOb_bigger.png"], ["name", "MIT"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."user_name" = 'cnn' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("user_name", "password", "email", "photo_url", "name") VALUES (?, ?, ?, ?, ?)  [["user_name", "cnn"], ["password", "cnn"], ["email", "contact@cnn.com"], ["photo_url", "https://pbs.twimg.com/profile_images/550063386914852865/4JHr5H_Y_bigger.jpeg"], ["name", "CNN"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."user_name" = ? LIMIT 1  [["user_name", "cnn"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tweets" ("user_id", "content", "photo_url", "create_time") VALUES (?, ?, ?, ?)  [["user_id", 3], ["content", "Rafael Nadal beats Fabio Fognini to win the ATP World Tour 500 tournament in Hamburg Sunday. http://cnn.it/1IDX8A9"], ["photo_url", "https://pbs.twimg.com/media/CLaiblWUEAAuk_M.jpg"], ["create_time", "2015-08-02 20:23:19.120000"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."user_name" = ? LIMIT 1  [["user_name", "mit"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tweets" ("user_id", "content", "photo_url", "create_time") VALUES (?, ?, ?, ?)  [["user_id", 2], ["content", "When to hold em and when to fold em: Free online course from @MITOCW teaches #poker http://ti.me/1U2Fb22"], ["photo_url", "https://pbs.twimg.com/media/CLVB7k9VAAAwyS6.jpg"], ["create_time", "2015-08-01 09:23:19.120000"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
