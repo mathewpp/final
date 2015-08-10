@@ -29,9 +29,11 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li><a href="/">Home</a></li>
-          <li><a href="">Notifications</a></li>
-          <li><a href="/tweets">Tweets</a></li>
-          <li><a href="">Messages</a></li>
+          <% if session[:user_id] %>
+            <li><a href="">Notifications</a></li>
+            <li><%= link_to "Tweets", "/tweets/#{session[:user_id]}" %>
+            <li><a href="">Messages</a></li>
+          <% end %>  
 
           <form action="" class="navbar-form navbar-left" role="search">
             <div class="form-group">
@@ -42,8 +44,14 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Sign Up</a></li>
-          <li><a href="#">Login</a></li>
+          <% if session[:user_id] %>
+            <li>Hello, <%= User.find(session[:user_id]).name %></li>
+            <li><a href="/account">My Account</a></li>
+            <li><a href="/logout">Sign Out</a></li>
+          <% else %>  
+            <li><a href="/users/new">Sign Up</a></li>
+            <li><a href="/sessions/new">Sign In</a></li>
+          <% end %>
         </ul>
       </div>
     </div>

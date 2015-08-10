@@ -1,0 +1,13 @@
+<h1>Tweets!</h1>
+
+<ul>
+
+<% @tweets.each do |tweet| %>
+<li><%= tweet.content %> 
+	<% if session[:user_id] && session[:user_id] == tweet.user_id	%>
+	<%= link_to "(edit)", "/tweets/#{tweet.id}/edit" %>&nbsp;
+	<%= link_to "(delete)", "/tweets/#{tweet.id}" , :method => "delete" %>
+	<% end %>
+</li>
+<% end %>
+</ul>

@@ -20,14 +20,19 @@ class TweetsController < ApplicationController
     tweet.content = params[:tweet]
     tweet.photo_url = params[:photo_url]
     tweet.create_time = DateTime.now
-    user = User.find_by(:user_name => "test")
-    tweet.user_id = user.id
+    if session[:user_id]
+      puts 'hello there is a user'
+    end  
+    puts session[:user_id] 
+    puts 'hello***'
+    puts session[:user_id]
+    tweet.user_id = session[:user_id]
     tweet.save
     redirect_to "/tweets"
   end
 
   def index
-      @tweets = Tweet.all
+    @tweets = User.find_by(:id => params["id"]).tweets
   end
 
   def destroy
@@ -37,7 +42,7 @@ class TweetsController < ApplicationController
   end
 
   def show
-    @tweet = Tweet.find_by(:id => params["id"])
+    @tweets = User.find_by(:id => params["id"]).tweets
   end
 
 end

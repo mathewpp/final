@@ -1,0 +1,4 @@
+<% index = 1 %>
+<% @follows.each do |follow| %>
+  <%= follow.followed.user_name %>  
+<% end %>

@@ -14,6 +14,7 @@
  *= require_self
  */
 
+
 label {
     display:inline-block;
     float: left;
@@ -23,25 +24,24 @@ label {
     width: 140px;
 }
 
+.column-left{ float: left; width: 33%; }
+.column-right{ float: right; width: 33%; }
+.column-center{ display: inline-block; width: 33%; }
+
 .home_left_section {
-    width:250px;
-    height:200px;
-    float:left;
-    padding:10px; 
+    float: left; 
+    width: 25%;
+    background-color:skyblue;
 }
 
 .home_center_section {
-    width:250px;
-    height:200px;
-    float:center;
-    padding:10px; 
+    display: inline-block; 
+    width: 50%;
 }
 
 .home_right_section {
-    width:250px;
-    height:200px;
-    float:right;	
-    padding:10px; 
+    float: right; 
+    width: 24%;
     background-color:skyblue;
 }
 
@@ -50,7 +50,6 @@ label {
     float:middle;	
     padding:10px; 
 }
-
 
 p {
   font-size: 18px;
