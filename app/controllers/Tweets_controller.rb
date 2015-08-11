@@ -20,12 +20,6 @@ class TweetsController < ApplicationController
     tweet.content = params[:tweet]
     tweet.photo_url = params[:photo_url]
     tweet.create_time = DateTime.now
-    if session[:user_id]
-      puts 'hello there is a user'
-    end  
-    puts session[:user_id] 
-    puts 'hello***'
-    puts session[:user_id]
     tweet.user_id = session[:user_id]
     tweet.save
     redirect_to "/tweets"
@@ -45,4 +39,17 @@ class TweetsController < ApplicationController
     @tweets = User.find_by(:id => params["id"]).tweets
   end
 
+  def reply
+    @tweet = Tweet.find_by(:id => params["id"])
+  end
+
+  def post_reply
+    reply = Reply.new
+    reply.message = params[:message]
+    reply.user_id = session[:user_id]
+    reply.tweet_id = params[:id]
+    reply.create_time = DateTime.now
+    reply.save
+    redirect_to root_url # "/"
+  end
 end

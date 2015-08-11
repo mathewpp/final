@@ -31,8 +31,8 @@
           <li><a href="/">Home</a></li>
           <% if session[:user_id] %>
             <li><a href="">Notifications</a></li>
-            <li><%= link_to "Tweets", "/tweets/#{session[:user_id]}" %>
-            <li><a href="">Messages</a></li>
+            <li><%= link_to "Tweets", "/tweets/#{session[:user_id]}" %></li>
+            <li><%= link_to "Messages", "/messages" %></li>
           <% end %>  
 
           <form action="" class="navbar-form navbar-left" role="search">

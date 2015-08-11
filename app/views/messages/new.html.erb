@@ -1,0 +1,28 @@
+<h2>Send a private message!!!</h2>
+
+<% if @message.errors.any? %>
+<ul>
+	<% @message.errors.full_messages.each do |attr, msg| %>
+	<li>
+		<font color="red"><%= "#{attr} #{msg}" if @user.errors[attr].first == msg %></font>
+	</li>	
+	<% end %>
+</ul>	
+<% end %>
+
+<%= form_tag "/messages" do %>
+
+<div class="user_register_section">
+   <label >To:</label>
+   @<input type="text" name="receiver_id" placeholder="Reciver Username" size="40" value="<%= @message.user_name %>">
+</div>        
+<div class="user_register_section">
+   <label>Message:</label>
+   <textarea name="message" rows="5" cols="35" placeholder="Message" required></textarea>
+</div>
+
+<div class="user_register_section right" align="center">
+	<input type="submit" value="Send Message">
+</div>
+
+<% end %>

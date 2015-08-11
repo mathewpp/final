@@ -67,13 +67,23 @@
       </tr>
   </tbody>
 
+    <tbody>
+      <th width="5%">Replies:</th>
+      <% tweet.replys.each do |reply| %>
+      <tr>
+        <td>@user</td>
+        <td><%= reply.message %></td>
+      </tr>
+      <% end %>
+  </tbody>
+
   <tbody>
       <tr>
         <td>
-           <td><%= link_to "Follow", "/follow/#{tweet.user_id}", :method => :post %></td>
+           <%= link_to "Follow", "/follow/#{tweet.user_id}", :method => :post %>
         </td>
         <td>
-
+           <%= link_to "Reply", "/tweets/reply/#{tweet.id}"%>
         </td>
       </tr>
   </tbody>

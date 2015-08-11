@@ -1,0 +1,16 @@
+<h3>Reply to Tweet!</h3>
+
+<%= form_tag "/tweets/post_reply/#{@tweet.id}" do %>
+<div class="user_register_section">
+   <label >Tweet:</label>
+   <%= @tweet.content %> 
+</div>        
+<div class="user_register_section">
+   <label>Reply:</label>
+   <textarea name="message" rows="5" cols="35" placeholder="Reply" required></textarea>
+</div>
+
+<div class="user_register_section right" align="center">
+	<input type="submit" value="Submit Reply">
+</div>
+<% end %>

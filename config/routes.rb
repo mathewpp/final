@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   get '/followers/:id' => 'follow#followers'
   get '/following/:id' => 'follow#following'
 
+  get '/tweets/reply/:id' => 'tweets#reply'
+  post '/tweets/post_reply/:id' => 'tweets#post_reply'
+
   resources :users
   resources :tweets
   resources :messages

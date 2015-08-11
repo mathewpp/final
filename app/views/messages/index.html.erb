@@ -1,0 +1,20 @@
+<div class="page-header">  <h3>Private Messages!!
+	<small>
+		<a class="btn btn-success pull-right" href="/messages/new">Send a Message!!</a>
+	</small>
+</h3>
+
+<% @messages.each do |message| %>
+
+<p>
+  <strong>From:</strong> <%= message.sender_id.user_name %>
+</p>
+
+<p>
+  <strong>Message:</strong> <%= message.message %>
+</p>
+
+</div>
+
+<% end %>
+

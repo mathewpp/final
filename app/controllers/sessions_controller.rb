@@ -14,8 +14,6 @@ class SessionsController < ApplicationController
 
     if user
       if user.password == params["password"]
-        cookies[:user_id] = user.id
-        puts 'hello world!!!!!!!!'
         session[:user_id] = user.id
         flash[:notice] = "Welcome Back, #{user.name}!"
         redirect_to root_url
