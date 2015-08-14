@@ -1,4 +1,9 @@
 source 'https://rubygems.org'
+ruby '2.2.0'
+
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '4.2.0'
+
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'kaminari'
@@ -16,6 +21,7 @@ group :development do
 	gem 'sqlite3'
 end
 
+gem 'rails_12factor', group: :production
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
