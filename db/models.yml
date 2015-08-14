@@ -1,9 +1,9 @@
 User
   user_name: string
-  password: string
   email: string
   name: string
   photo_url: string
+  password_digest: string
 
 Tweet
  user_id: integer

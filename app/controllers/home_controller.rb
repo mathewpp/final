@@ -5,6 +5,9 @@ class HomeController < ApplicationController
 		@user = User.find(session[:user_id])
   	end
   	@tweet = Tweet.all
+
+  	@tweet = @tweet.page(params[:page]).per(4)
+
   end
 
 

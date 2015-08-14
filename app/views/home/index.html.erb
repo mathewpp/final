@@ -15,6 +15,7 @@
  <%= @user.name %>
 </p>
 
+
 <table>
 <tr>
   <td>Tweets&nbsp;</td>
@@ -42,15 +43,20 @@
 </p>
 </div>
 
+
 <div class="home_center_section">
-<p>  
 <table class='table table-striped'>
+   <tbody>
+      <tr><td colspan="2"><%= paginate @tweet %></td></tr>
+  </tbody>
+ 
   <% @tweet.each do |tweet| %>
     <tr>
-      <th width="5%">
+      <th width="100%">
       <% if  tweet.user.photo_url != nil &&  tweet.user.photo_url  =~ URI::regexp %>
         <%= link_to image_tag(tweet.user.photo_url, height: '40px'), "" %>
-      <% end %>  
+      <% else %>&nbsp;
+      <% end %>
       <%=tweet.user.name%>
       @<%=tweet.user.user_name%>
       <%=tweet.create_time%>
@@ -59,23 +65,26 @@
   <tbody>
       <tr>
         <td>
-         <% if  tweet.photo_url != nil && tweet.photo_url  =~ URI::regexp %>
-          <%= link_to image_tag(tweet.photo_url, height: '200px'), "" %>
-        <% end %>  
+          <% if  tweet.photo_url != nil && tweet.photo_url  =~ URI::regexp %>
+            <%= link_to image_tag(tweet.photo_url, height: '200px'), "" %>
+          <% else %>&nbsp;
+          <% end %>  
         </td>
         <td><%= tweet.content %></td>
       </tr>
   </tbody>
 
-    <tbody>
-      <th width="5%">Replies:</th>
-      <% tweet.replys.each do |reply| %>
-      <tr>
-        <td>@user</td>
-        <td><%= reply.message %></td>
-      </tr>
-      <% end %>
-  </tbody>
+   <% if tweet.replys.count > 0 %>
+      <tbody>
+        <th width="5%">Replies:</th>
+        <% tweet.replys.each do |reply| %>
+        <tr>
+          <td>@user</td>
+          <td><%= reply.message %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    <% end %>
 
   <tbody>
       <tr>
@@ -88,9 +97,9 @@
       </tr>
   </tbody>
 
-
-
+  <tr><td colspan = "100%"></td></tr>
   <% end %>
+
 </table>
 </p>
 </div>
