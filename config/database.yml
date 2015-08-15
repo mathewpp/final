@@ -28,3 +28,9 @@ test:
 production:
   <<: *default
   database: db/production.sqlite3
+
+production:
+  <<: *default
+  database: mathewptwitter_production
+  username: mathewptwitterr
+  password: <%= ENV['mathewptwitter_DATABASE_PASSWORD'] %>
