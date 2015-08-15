@@ -50384,3 +50384,246 @@ Processing by HomeController#index as HTML
   Rendered home/index.html.erb within layouts/application (29.2ms)
   [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 8]]
 Completed 200 OK in 64ms (Views: 61.6ms | ActiveRecord: 1.8ms)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  CREATE TEMPORARY TABLE "afollows" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "followed" integer DEFAULT 0, "follower" integer DEFAULT 0) 
+  [1m[36m (0.4ms)[0m  [1mSELECT * FROM "follows"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "afollows" ("id","followed","follower") VALUES (1, 3, 6)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "afollows" ("id","followed","follower") VALUES (2, 3, 6)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "afollows" ("id","followed","follower") VALUES (3, 3, 6)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "afollows" ("id","followed","follower") VALUES (4, 3, 5)[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "afollows" ("id","followed","follower") VALUES (5, 3, 5)
+  [1m[36m (1.0ms)[0m  [1mDROP TABLE "follows"[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "follows" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "followed" integer DEFAULT 0, "follower" integer DEFAULT 0) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "afollows"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "follows" ("id","followed","follower") VALUES (1, 3, 6)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "follows" ("id","followed","follower") VALUES (2, 3, 6)[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "follows" ("id","followed","follower") VALUES (3, 3, 6)
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "follows" ("id","followed","follower") VALUES (4, 3, 5)[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "follows" ("id","followed","follower") VALUES (5, 3, 5)
+  [1m[36m (0.4ms)[0m  [1mDROP TABLE "afollows"[0m
+  [1m[35m (5.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TEMPORARY TABLE "afollows" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "followed" integer DEFAULT 0, "follower" integer DEFAULT 0) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "follows"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "afollows" ("id","followed","follower") VALUES (1, 3, 6)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "afollows" ("id","followed","follower") VALUES (2, 3, 6)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "afollows" ("id","followed","follower") VALUES (3, 3, 6)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "afollows" ("id","followed","follower") VALUES (4, 3, 5)[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "afollows" ("id","followed","follower") VALUES (5, 3, 5)
+  [1m[36m (0.4ms)[0m  [1mDROP TABLE "follows"[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "follows" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "followed" integer DEFAULT 0, "follower" integer DEFAULT 0) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "afollows"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "follows" ("id","followed","follower") VALUES (1, 3, 6)
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "follows" ("id","followed","follower") VALUES (2, 3, 6)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "follows" ("id","followed","follower") VALUES (3, 3, 6)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "follows" ("id","followed","follower") VALUES (4, 3, 5)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "follows" ("id","followed","follower") VALUES (5, 3, 5)
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "afollows"[0m
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_direct_messages_on_sender_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_direct_messages_on_sender_id' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_direct_messages_on_receiver_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_direct_messages_on_receiver_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_favorites_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_favorites_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_favorites_on_tweet_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_favorites_on_tweet_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_list_infos_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_list_infos_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_list_infos_on_list_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_list_infos_on_list_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_lists_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_lists_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_replies_on_tweet_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_replies_on_tweet_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_replies_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_replies_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_retweets_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_retweets_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_retweets_on_tweet_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_retweets_on_tweet_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tweets_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tweets_on_user_id' AND type='index'
+[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_direct_messages_on_sender_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_direct_messages_on_sender_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_direct_messages_on_receiver_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_direct_messages_on_receiver_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_favorites_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_favorites_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_favorites_on_tweet_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_favorites_on_tweet_id' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_list_infos_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_list_infos_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_list_infos_on_list_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_list_infos_on_list_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_lists_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_lists_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_replies_on_tweet_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_replies_on_tweet_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_replies_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_replies_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_retweets_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_retweets_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_retweets_on_tweet_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_retweets_on_tweet_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tweets_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tweets_on_user_id' AND type='index'
+
+  [1m[36mFollow Load (0.2ms)[0m  [1mSELECT "follows".* FROM "follows"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mTweet Load (0.3ms)[0m  SELECT "tweets".* FROM "tweets"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users"[0m
