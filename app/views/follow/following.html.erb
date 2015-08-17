@@ -1,4 +1,5 @@
 <% index = 1 %>
 <% @follows.each do |follow| %>
-  <%= follow.followed.user_name %>  
+  <% user = User.find(follow.followed) %>
+  <%= user.user_name %>  
 <% end %>

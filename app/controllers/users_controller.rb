@@ -52,4 +52,18 @@ class UsersController < ApplicationController
     @user = User.find(session[:user_id])
   end
 
+  def find
+    search_text = params[:name]
+    puts 'inside find'
+    if search_text
+      puts 'search_text'
+      @users = User.where("user_name or name like ?", "%#{search_text}%")
+      @follows = Follow.where(:follower => session[:user_id])
+      @follows.each do follow
+        puts follow.followed.user_name
+      end  
+    end  
+    render 'search_and_results.html'
+  end
+
 end

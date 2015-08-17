@@ -1,0 +1,46 @@
+<% require 'uri' %>
+
+<div class="home_left_section">
+
+<p>
+  <%= form_tag "/users/find" do %>
+    <p>Find Users</p>
+    <input type="text" name="name" value="" placeholder="partial user name/name" maxLength = "15" length="15">
+    <br><i><font size="1"> e.g. pa to display users like Ashley Parker, Paula Brown etc.</font></i>
+    <input type="submit" value="Search">
+  <% end %> 
+</p>
+
+</div>
+
+<div class="home_center_section">
+<p>Users</p>
+<table class='table table-striped'>
+
+  <tr>
+      <th>user</th>
+      <th>name</th>
+      <th></th>
+  </tr>
+
+  <% if @users %>
+    <% @users.each do |user| %>
+      <tbody>
+        <tr>
+          <td>
+            @<%=user.user_name%>     
+          </td>
+          <td>
+             @<%=user.name%>
+          </td>
+          <td>
+                    
+            <%= link_to "Follow", "/follow/#{user.id}", :method => :post %>
+          
+          </td>
+        </tr>
+        </tbody>
+     <% end  %> 
+  <% end  %>  
+</table>
+</p>

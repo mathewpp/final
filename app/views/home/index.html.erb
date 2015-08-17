@@ -38,9 +38,13 @@
   <% end %>
 </p>  
 
+
+<p>
+  <%= link_to "Click to find Users to follow!!!", "/users/find" %>
+</p>  
+
 <% end %>
 
-</p>
 </div>
 
 
@@ -89,7 +93,7 @@
   <tbody>
       <tr>
         <td>
-           <%= link_to "Follow", "/follow/#{tweet.user_id}", :method => :post %>
+           
         </td>
         <td>
            <%= link_to "Reply", "/tweets/reply/#{tweet.id}"%>
@@ -118,7 +122,7 @@
 <% else %>
   <div class="home_right_section">
     <p>
-      hello
+      Who to Follow-
     </p>
   </div>
 

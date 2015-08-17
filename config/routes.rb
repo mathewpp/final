@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   get '/tweets/reply/:id' => 'tweets#reply'
   post '/tweets/post_reply/:id' => 'tweets#post_reply'
 
+  get 'users/find' => 'users/find'
+  post 'users/find' => 'users/find'
+
   resources :users
   resources :tweets
   resources :messages

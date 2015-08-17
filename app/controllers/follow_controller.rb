@@ -25,17 +25,11 @@ class FollowController < ApplicationController
 
   def followers
      @follows = Follow.where(:followed => session[:user_id])
-     @follows.each do |follow|
-        puts follow.follower
-     end   
   end
 
 
-   def following
+  def following
      @follows = Follow.where(:follower => session[:user_id])
-     @follows.each do |follow|
-        puts follow.follower
-     end   
   end
 
 end
