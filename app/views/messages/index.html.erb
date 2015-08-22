@@ -1,20 +1,32 @@
-<div class="page-header">  <h3>Private Messages!!
-	<small>
-		<a class="btn btn-success pull-right" href="/messages/new">Send a Message!!</a>
-	</small>
-</h3>
+<div class="container">
+  <h4 class="title">
+    Private Messages!!
+    <small class="text-muted">
+      	<small>
+			<a class="btn btn-success pull-right" href="/messages/new">Send a Message!!</a>
+		</small>
+    </small>
+  </h4>
+  	<div class="container">
+  		<div class="row">
+	      <div class="col-md-4 text-left">
+			<%= paginate @messages %>	
+	  	  </div>
+	 	</div>
+	</div> 	
 
-<% @messages.each do |message| %>
-
-<p>
-  <strong>From:</strong> <%= message.sender_id.user_name %>
-</p>
-
-<p>
-  <strong>Message:</strong> <%= message.message %>
-</p>
-
+  	<% @messages.each do |message| %>
+	    <div class="row">
+	      <div class="col-md-10 text-left">
+			<p>
+	  			@<%= message.sender.user_name %> 
+	  			<i class="fa fa-home">
+	  				wrote at @<%= message.create_time.to_formatted_s(:long)%> : 
+	  			</i>
+	  			<%= message.message %>
+			</p>
+		   </div>
+	     </div>
+     <% end %>
+   </div>
 </div>
-
-<% end %>
-

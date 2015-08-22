@@ -25,9 +25,11 @@ class TweetsController < ApplicationController
     redirect_to "/tweets"
   end
 
-  def index
-    @tweets = User.find_by(:id => params["id"]).tweets
-  end
+   def index
+     @tweets = User.find_by(id: session[:user_id]).tweets
+     @tweets = @tweets.page(params[:page]).per(5)
+     render 'show'
+   end
 
   def destroy
     tweet = Tweet.find_by(:id => params["id"])
@@ -36,7 +38,8 @@ class TweetsController < ApplicationController
   end
 
   def show
-    @tweets = User.find_by(:id => params["id"]).tweets
+    @tweets = User.find_by(id: session[:user_id]).tweets
+    @tweets = @tweets.page(params[:page]).per(5)
   end
 
   def reply

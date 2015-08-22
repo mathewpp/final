@@ -1,3 +1,3 @@
 class Reply < ActiveRecord::Base
-	has_many :replys
+	belongs_to :user
 end

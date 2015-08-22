@@ -30,12 +30,12 @@
         <ul class="nav navbar-nav">
           <li><a href="/">Home</a></li>
           <% if session[:user_id] %>
-            <li><a href="">Notifications</a></li>
             <li><%= link_to "Tweets", "/tweets/#{session[:user_id]}" %></li>
             <li><%= link_to "Messages", "/messages" %></li>
+            <li><%= link_to "Groups", "/groups" %></li>
           <% end %>  
 
-          <form action="" class="navbar-form navbar-left" role="search">
+          <form action="/" class="navbar-form navbar-left" role="search">
             <div class="form-group">
               <input value="<%= params[:keyword] %>" name="keyword" type="text" class="form-control" required placeholder="Search Twitter">
             </div>

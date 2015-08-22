@@ -1,5 +1,43 @@
-<% index = 1 %>
-<% @follows.each do |follow| %>
-  <% user = User.find(	follow.follower) %>
-  <%= user.user_name %>  
-<% end %>
+<div class="container">
+  <h4 class="title">
+    Followers!!
+    </small>
+  </h4>
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-9 text-left">
+        <table class='table table-striped'>
+          <tbody>
+              <tr><td colspan="3"><%= paginate @follows %></td></tr>
+           </tbody>
+         <p>
+          <tr>
+              <th>user</th>
+              <th>name</th>
+              <th>Tweets</th>
+          </tr>
+         </p> 
+
+          <% if @follows %>
+            <% @follows.each do |follow| %>
+            <% user = User.find(	follow.follower) %>
+              <tbody>
+                <tr>
+                  <td>
+                    @<%=user.user_name%>     
+                  </td>
+                  <td>
+                     <%=user.name%>
+                  </td>
+                  <td>
+                  	<%=user.tweets.count%>
+                  </td>
+                </tr>
+                </tbody>
+             <% end  %> 
+          <% end  %>  
+        </table>
+      </div>
+    </div>
+  </div>

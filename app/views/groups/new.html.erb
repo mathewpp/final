@@ -1,0 +1,28 @@
+<h2>Add group!!!</h2>
+
+<% if @group.errors.any? %>
+<ul>
+	<% @group.errors.full_messages.each do |attr, msg| %>
+	<li>
+		<font color="red"><%= "#{attr} #{msg}" if @group.errors[attr].first == msg %></font>
+	</li>	
+	<% end %>
+</ul>	
+<% end %>
+
+<%= form_tag "/groups" do %>
+
+<div class="user_register_section">
+   <label >Name:</label>
+   <input type="text" name="name" placeholder="Name" size="40" value="<%= @group.name %>" required>
+</div>        
+<div class="user_register_section">
+  <label>Description:</label>
+  <input type="text" name="description" placeholder="Description" size="40" maxLength = "50" value="<%= @group.description %>" required>
+</div>
+<div class="user_register_section">        
+   <input type="submit" value="Submit">
+</div>
+</form>
+
+<% end %>

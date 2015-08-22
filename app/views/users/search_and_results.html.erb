@@ -1,46 +1,60 @@
 <% require 'uri' %>
+<div class="container">
+  <h4 class="title">
+    Follow!!
+    <small class="text-muted">
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star-half-o"></i>
+      <i class="fa fa-star-o"></i>
+    </small>
+  </h4>
 
-<div class="home_left_section">
+<div class="container">
+    <div class="row">
+      <div class="col-md-3 text-left sky_blue">
+      <p>
+        <%= form_tag "/users/find" do %>
+          <p><input type="text" name="search_text" value="<%=@search_text%>" placeholder="partial user name/name" maxLength = "20" length="20"></p>
+          <p><i><font size="1"> e.g. pa displays users like Ashley Parker, Paula Brown etc.</font></i></p>
+          <p><input type="submit" value="Search"></p>
+        <% end %> 
+      </p>
+      </div>
 
-<p>
-  <%= form_tag "/users/find" do %>
-    <p>Find Users</p>
-    <input type="text" name="name" value="" placeholder="partial user name/name" maxLength = "15" length="15">
-    <br><i><font size="1"> e.g. pa to display users like Ashley Parker, Paula Brown etc.</font></i>
-    <input type="submit" value="Search">
-  <% end %> 
-</p>
+      <div class="col-md-9 text-left">
+        <table class='table table-striped'>
+         <p>
+          <tr>
+              <th>user</th>
+              <th>name</th>
+              <th></th>
+          </tr>
+         </p> 
 
-</div>
-
-<div class="home_center_section">
-<p>Users</p>
-<table class='table table-striped'>
-
-  <tr>
-      <th>user</th>
-      <th>name</th>
-      <th></th>
-  </tr>
-
-  <% if @users %>
-    <% @users.each do |user| %>
-      <tbody>
-        <tr>
-          <td>
-            @<%=user.user_name%>     
-          </td>
-          <td>
-             @<%=user.name%>
-          </td>
-          <td>
-                    
-            <%= link_to "Follow", "/follow/#{user.id}", :method => :post %>
-          
-          </td>
-        </tr>
-        </tbody>
-     <% end  %> 
-  <% end  %>  
-</table>
-</p>
+          <% if @users %>
+            <% @users.each do |user| %>
+              <tbody>
+                <tr>
+                  <td>
+                    @<%=user.user_name%>     
+                  </td>
+                  <td>
+                     <%=user.name%>
+                  </td>
+                  <td>
+                    <% if Follow.find_by_followed_and_follower(user.id, session[:user_id] ) %>
+                      <%= link_to "Following", "/unfollow/#{user.id}?search_text=#{@search_text}", :method => :post %>
+                    <% else %>
+                      <%= link_to "Follow", "/follow/#{user.id}?search_text=#{@search_text}", :method => :post %>
+                    <% end %>
+                  </td>
+                </tr>
+                </tbody>
+             <% end  %> 
+          <% end  %>  
+        </table>
+      </div>
+    </div>
+  </div>

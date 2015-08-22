@@ -4,28 +4,27 @@ User
   name: string
   photo_url: string
   password_digest: string
-
+  category: string
 Tweet
  user_id: integer
  content: text
  photo_url: string
- create_time: datetime  default current_timestamp
+ create_time: datetime
 
 Follow
-  followed: integer Users(User_id) ON DELETE CASCADE,
-  follower: integer Users(User_id) ON DELETE CASCADE,
+  followed_id: integer
+  follower_id: integer
 
 Favorite
   user_id: integer
   tweet_id: integer
 
-List
-  user_id: integer
-  list_name: string
-  description: string 
+Group
+  name: string 
+  description: string
 
-List_Info
-  list_id: integer
+GroupUser
+  group_id: integer
   user_id: integer
 
 Retweet

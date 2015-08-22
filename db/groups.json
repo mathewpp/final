@@ -1,0 +1,49 @@
+[
+{
+"name":"US Banks",
+"description":"Major Banks in the USA"
+},
+{
+"name":"Futures Exchanges",
+"description":"Futures exchanges in the USA"
+},
+{
+"name":"Chase 2016",
+"description":"Runners preparing for 2016 marathon"
+},
+{
+"name":"Rails Dev",
+"description":"All Rails Developers"
+},
+{
+"name":"JUGC",
+"description":"Java User Group Chicago"
+},
+{
+"name":"Teachers Chicago",
+"description":"For all teachers in Chicago"
+},
+{
+"name":"Go Cubs!",
+"description":"For all Chicago Cubs fans"
+},
+{
+"name":"Blackhawks",
+"description":"For all Chicago Blackhawks Fans"
+},
+{
+"name":"UChicago",
+"description":"All about University of Chicago"
+},
+{
+"name":"Futures",
+"description":"All about futures"
+},
+{
+"name":"Options",
+"description":"All about options"
+},
+{
+"name":"Chicago Hospitals",
+"description":"All about Chicago Hospitals"
+}]

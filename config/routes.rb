@@ -8,8 +8,11 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   get '/account' => 'users#show'
+
   
   post '/follow/:id' => 'follow#create'
+  post '/unfollow/:id' => 'follow#destroy'
+
   get '/followers' => 'follow#followers'
   get '/following' => 'follow#following'
   get '/followers/:id' => 'follow#followers'
@@ -18,11 +21,15 @@ Rails.application.routes.draw do
   get '/tweets/reply/:id' => 'tweets#reply'
   post '/tweets/post_reply/:id' => 'tweets#post_reply'
 
-  get 'users/find' => 'users/find'
-  post 'users/find' => 'users/find'
+  get 'users/find' => 'users#find'
+  post 'users/find' => 'users#find'
+
+  post '/groups/join/:id' => 'groups#join'
+  delete '/groups/user/:id' => 'groups#remove_user_from_group'
 
   resources :users
   resources :tweets
   resources :messages
+  resources :groups
 
 end

@@ -14,10 +14,10 @@
 ActiveRecord::Schema.define(version: 0) do
 
   create_table "direct_messages", force: :cascade do |t|
+    t.text     "message"
     t.integer  "sender_id"
     t.integer  "receiver_id"
     t.datetime "create_time"
-    t.text     "message"
   end
 
   add_index "direct_messages", ["receiver_id"], name: "index_direct_messages_on_receiver_id"
@@ -32,25 +32,25 @@ ActiveRecord::Schema.define(version: 0) do
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
 
   create_table "follows", force: :cascade do |t|
-    t.integer "followed", default: 0
-    t.integer "follower", default: 0
+    t.integer "followed_id"
+    t.integer "follower_id"
   end
 
-  create_table "list_infos", force: :cascade do |t|
-    t.integer "list_id"
+  add_index "follows", ["followed_id"], name: "index_follows_on_followed_id"
+  add_index "follows", ["follower_id"], name: "index_follows_on_follower_id"
+
+  create_table "group_users", force: :cascade do |t|
+    t.integer "group_id"
     t.integer "user_id"
   end
 
-  add_index "list_infos", ["list_id"], name: "index_list_infos_on_list_id"
-  add_index "list_infos", ["user_id"], name: "index_list_infos_on_user_id"
+  add_index "group_users", ["group_id"], name: "index_group_users_on_group_id"
+  add_index "group_users", ["user_id"], name: "index_group_users_on_user_id"
 
-  create_table "lists", force: :cascade do |t|
-    t.integer "user_id"
-    t.string  "list_name"
-    t.string  "description"
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
   end
-
-  add_index "lists", ["user_id"], name: "index_lists_on_user_id"
 
   create_table "notifications", force: :cascade do |t|
     t.string   "message"
@@ -60,10 +60,10 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "replies", force: :cascade do |t|
-    t.datetime "create_time"
     t.text     "message"
     t.integer  "user_id"
     t.integer  "tweet_id"
+    t.datetime "create_time"
   end
 
   add_index "replies", ["tweet_id"], name: "index_replies_on_tweet_id"
@@ -89,9 +89,10 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "users", force: :cascade do |t|
     t.string "user_name"
     t.string "email"
-    t.string "photo_url"
     t.string "name"
+    t.string "photo_url"
     t.string "password_digest"
+    t.string "category"
   end
 
 end

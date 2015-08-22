@@ -1,129 +1,142 @@
-<% require 'uri' %>
+<div class="container">
+  <h4 class="title">
+    Welcome to Twitter!!
+    <small class="text-muted">
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star-half-o"></i>
+      <i class="fa fa-star-o"></i>
+    </small>
+  </h4>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 text-left">
+         <% if session[:user_id] %>
+          <% if  @user.photo_url != nil%>
+             <p>
+              <%= image_tag @user.photo_url ,:title => 'avatar', :width => 50, :height => 50, :title => "avatar" %>
+             </p> 
+          <% end %>   
+         <p>
+            @<%= @user.user_name %>
+         </p>
+         <p> 
+            <%= @user.name %>
+          </p>
 
-<h4> Welcome to Twitter!!! </h4>
+          <table>
+            <tr>
+              <td>Tweets&nbsp;</td>
+              <td>Following&nbsp;</td>
+              <td>Followers&nbsp;</td>
+            </tr>
+            <tr>  
+              <td><%= link_to @user.tweets.count, "/tweets" %></td>
+              <td><%= link_to @user.follower.count, "/following" %></td>
+              <td><%= link_to @user.followed.count, "/followers" %></td>
+            </tr>
+          </table>
 
-<div class="home_left_section">
+           <p>
+            <%= form_tag "/tweets" do %>
+            <textarea name="tweet" rows="5" cols="35" placeholder="Tweet" required></textarea>
+            <input type="text" name="photo_url" placeholder="Picture Location" size="35">
+            <input type="submit" value="Tweet">
+            <% end %>
+           </p>
 
-<p>
-
-<% if session[:user_id] %>
-
-<p>
- @<%= @user.user_name %>
-</p>
-<p> 
- <%= @user.name %>
-</p>
-
-
-<table>
-<tr>
-  <td>Tweets&nbsp;</td>
-  <td>Following&nbsp;</td>
-  <td>Followers&nbsp;</td>
-</tr>
-<tr>  
-  <td><%= link_to @user.tweets.count, "/tweets/#{session[:user_id]}" %></td>
-  <td><%= link_to @user.follower.count, "/following" %></td>
-  <td><%= link_to @user.followed.count, "/followers" %></td>
-</tr>
-</table>
-
-  
-<p>
-  <%= form_tag "/tweets" do %>
-    <textarea name="tweet" rows="5" cols="35" placeholder="Tweet" required></textarea>
-    <input type="text" name="photo_url" placeholder="Picture Location" size="35">
-    <input type="submit" value="Tweet">
-  <% end %>
-</p>  
+           <div class="navbar-link">
+            <%= link_to "Click to find Users to follow!!!", "/users/find" %>
+           </div>  
+    
+        <% end %>  
+      </div>
 
 
-<p>
-  <%= link_to "Click to find Users to follow!!!", "/users/find" %>
-</p>  
+      <div class="col-md-6 summary">
+        <table class='table table-striped'>
+          <tbody>
+            <tr><td colspan="2"><%= paginate @tweets %></td></tr>
+          </tbody>
 
-<% end %>
+          <% @tweets.each do |tweet| %>
+          <tr>
+            <td>
+            <% if  tweet.user.photo_url != nil &&  tweet.user.photo_url  =~ URI::regexp %>
+              <%= link_to image_tag(tweet.user.photo_url, height: '40px'), "" %>
+            <% else %>&nbsp;
+            <% end %>
+            <strong><%=tweet.user.name%></strong>
+            @<%=tweet.user.user_name%>
+            <% if tweet.create_time %>
+              <%= tweet.create_time.to_formatted_s(:long)%>
+           <% end %>   
+            </td>
+            <td></td>
+          </tr>
+          <tbody>
+              <tr> 
+                <td colspan="2"><%= tweet.content %></td>
+              </tr>
 
+              <% if  tweet.photo_url != nil && tweet.photo_url  =~ URI::regexp %>
+              <tr>
+                <td colspan="2">
+                    <%= link_to image_tag(tweet.photo_url, height:'200'), "" %>
+                </td>    
+              </tr>
+              <% end %>  
+          </tbody>
+
+          <% if tweet.replys.count > 0 %>
+              <td>Replies:</td>
+              <% tweet.replys.each do |reply| %>
+              <tr>
+                <td>
+                  @<%=reply.user.user_name%> says at <%= reply.create_time.to_formatted_s(:long)%>
+                  <%= reply.message %>
+                </td>
+                <td></td>
+              </tr>
+              <% end %>
+            </tbody>
+          <% end %>
+
+          <tbody>
+            <tr>
+              <td>
+                 
+              </td>
+              <td>
+                 <%= link_to "Reply", "/tweets/reply/#{tweet.id}"%>
+              </td>
+            </tr>
+          </tbody>
+
+          <tr><td colspan = "100%"></td></tr>
+          <% end %>
+
+          </table>
+          </p>
+      </div>
+      <div class="col-md-3 text-right">
+          <% if !session[:user_id] %>
+          <p>
+            <form method="get" action="/users/new">
+              <p align ="center">New to Twitter?</p>
+              <p align ="center">Sign up now to get your own personalized timeline!</p>
+              <br><br>
+              <p align ="center"><button type="submit" class="btn btn-default">Sign up</button></p>
+            </form>  
+          </p>
+          <% else %>
+            <p>
+              Users to follow:
+            </p>
+          <% end %>
+      </div>
+    </div>
+
+    </div>
 </div>
-
-
-<div class="home_center_section">
-<table class='table table-striped'>
-   <tbody>
-      <tr><td colspan="2"><%= paginate @tweet %></td></tr>
-  </tbody>
- 
-  <% @tweet.each do |tweet| %>
-    <tr>
-      <th width="100%">
-      <% if  tweet.user.photo_url != nil &&  tweet.user.photo_url  =~ URI::regexp %>
-        <%= link_to image_tag(tweet.user.photo_url, height: '40px'), "" %>
-      <% else %>&nbsp;
-      <% end %>
-      <%=tweet.user.name%>
-      @<%=tweet.user.user_name%>
-      <%=tweet.create_time%>
-      </th>
-    </tr>
-  <tbody>
-      <tr>
-        <td>
-          <% if  tweet.photo_url != nil && tweet.photo_url  =~ URI::regexp %>
-            <%= link_to image_tag(tweet.photo_url, height: '200px'), "" %>
-          <% else %>&nbsp;
-          <% end %>  
-        </td>
-        <td><%= tweet.content %></td>
-      </tr>
-  </tbody>
-
-   <% if tweet.replys.count > 0 %>
-      <tbody>
-        <th width="5%">Replies:</th>
-        <% tweet.replys.each do |reply| %>
-        <tr>
-          <td>@user</td>
-          <td><%= reply.message %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    <% end %>
-
-  <tbody>
-      <tr>
-        <td>
-           
-        </td>
-        <td>
-           <%= link_to "Reply", "/tweets/reply/#{tweet.id}"%>
-        </td>
-      </tr>
-  </tbody>
-
-  <tr><td colspan = "100%"></td></tr>
-  <% end %>
-
-</table>
-</p>
-</div>
-
-<% if !session[:user_id] %>
-<div class="home_right_section">
-  <p>
-  <form method="get" action="/users/new">
-    <p align ="center">New to Twitter?</p>
-    <p align ="center">Sign up now to get your own personalized timeline!</p>
-    <br><br>
-    <p align ="center"><button type="submit" class="btn btn-default">Sign up</button></p>
-  </form>  
-  </p>
-</div>
-<% else %>
-  <div class="home_right_section">
-    <p>
-      Who to Follow-
-    </p>
-  </div>
-
-<% end %>

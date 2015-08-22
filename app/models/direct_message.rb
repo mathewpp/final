@@ -1,7 +1,9 @@
 class DirectMessage < ActiveRecord::Base
-  belongs_to :sender_id, :class_name => "User", :foreign_key => "sender_id"
-  belongs_to :receiver_id, :class_name => "User", :foreign_key => "receiver_id"
+  
+  belongs_to :sender, :class_name => 'User'
+  belongs_to :receiver, :class_name => 'User'
 
+  validates :receiver_id, :message, presence: true
   attr_accessor :user_name
 
 end

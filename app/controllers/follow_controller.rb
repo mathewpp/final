@@ -5,31 +5,42 @@ class FollowController < ApplicationController
     @follow.followed=params["id"]
     @follow.follower=session[:user_id]
     follow_user = User.find(params["id"])
+    @search_text = params[:search_text]
     if @follow.save
-      flash[:notice] = "You are following #{follow_user.user_name}"
+      # flash[:notice] = "You are following #{follow_user.user_name}<br>"
+      if @search_text
+        @users = User.where("user_name or name like ?", "%#{@search_text}%")
+      end  
+      render 'users/search_and_results'
+    else
+      redirect_to root_url # "/"
     end
-    redirect_to root_url # "/"
-
+    # render 'users/search_and_results'
   end
 
   def destroy
     follow_user = User.find(params["id"])
+    @search_text = params[:search_text]
     @follow = Follow.find_by_followed_and_follower(params[:id],session[:user_id])
     if @follow.delete
-      flash[:notice] = "You unfollowed #{follow_user.user_name}"
+      # flash[:notice] = "You unfollowed #{follow_user.user_name}"
+      if @search_text
+        @users = User.where("user_name or name like ?", "%#{@search_text}%")
+      end  
+      render 'users/search_and_results'
     else
       redirect_to root_url # "/"
     end
   end
 
-
   def followers
      @follows = Follow.where(:followed => session[:user_id])
+     @follows = @follows.page(params[:page]).per(4)
   end
-
 
   def following
      @follows = Follow.where(:follower => session[:user_id])
+     @follows = @follows.page(params[:page]).per(4)
   end
 
 end

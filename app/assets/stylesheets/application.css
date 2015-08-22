@@ -28,22 +28,9 @@ label {
 .column-right{ float: right; width: 33%; }
 .column-center{ display: inline-block; width: 33%; }
 
-.home_left_section {
-    float: left; 
-    width: 25%;
-    background-color:skyblue;
-}
 
-.home_center_section {
-    display: inline-block; 
-    width: 50%;
-}
-
-.home_right_section {
-    float: right; 
-    width: 24%;
-    background-color:skyblue;
-}
+.sky_blue {
+    background-color:skyblue;}
 
 .user_register_section {
 	margin-left: 200px;
@@ -54,17 +41,6 @@ label {
 p {
   font-size: 18px;
 }
-
-/*nav h1 {
-  background: #009;
-  color: white;
-  padding: 12px;
-}
-
-nav a, nav a:visited {
- text-decoration: none;
- color: white;
-}*/
 
 h2 {
  color: black;
@@ -85,8 +61,4 @@ img {
 p {
  margin-top: 24px;
  margin-bottom: 24px;
-}
-
-.movie {
-  width: 50%;
 }
