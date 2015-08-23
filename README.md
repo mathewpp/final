@@ -41,7 +41,9 @@ Functionalities Supported
 
 
 GitRepo:
+--------------
 *https://github.com/mathewpp/final*
 
-External:
+Public Url:
+--------------
 *https://mathewptwitter.herokuapp.com*
