@@ -2,10 +2,10 @@
 To run this Rails app on your laptop:
 
 1. Clone this repository
-2. bundle install
-3. rake db:migrate
-4. rake db:seed
-5. rails server
+1. bundle install
+1. rake db:migrate
+1. rake db:seed
+1. rails server
 
 At this point, you should be able to browse to http://localhost:3000 and you should see a list of tweets.
 
@@ -28,10 +28,10 @@ mathew, mit, stanford, uchicago, cnn, google, facebook, worldbank, financialtime
 
 Functionalities Supported
 1. Add/Edit/Delete/Sign in and Sign Out of Users
-2. Add/Edit/Delete of Tweet
-3. Sending Private Messages
-4. Add a group, join a group and unjoin group
-5. Search for Users to follow and follow/unfollow
+1. Add/Edit/Delete of Tweet
+1. Sending Private Messages
+1. Add a group, join a group and unjoin group
+1. Search for Users to follow and follow/unfollow
 
 
 GitRepo:
