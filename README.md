@@ -20,8 +20,8 @@ The app is inspired by twitter, but its not even close in terms of functionaliti
 
 Models/Tables
 --------------
-User, Tweet, Follow, Group, GroupUser, Retweet, DirectMessage, Reply, Notification and Favorite
-Notification and Favorite is not used with this version
+User, Tweet, Follow, Group, GroupUser, Retweet, DirectMessage, Reply, Notification and Favorite.
+*Retweet, Notification and Favorite models are not used with this version*
 
 Many To Many Relationship
 --------------
@@ -31,7 +31,7 @@ Many To Many Relationship
 Users:
 --------------
 
-- All users are lower case and alpha numeric only. 
+- User names must be alpha numeric and are stored in the application as lower case 
 - These are the test users, passwords are set same as username for test purposes : 
   - mathew, mit, stanford, uchicago, cnn, google, facebook, worldbank, financialtimes, wsj, nyse, cmegroup
 

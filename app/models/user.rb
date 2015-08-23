@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 	validates :user_name, :password, :name, presence: true
 	validates :user_name, uniqueness: true
 	validates :user_name, :format => { :with => /\A(?=.*[a-z])[a-z\d]+\Z/i }
+	validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
 
 end

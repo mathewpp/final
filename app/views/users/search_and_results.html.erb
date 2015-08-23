@@ -44,7 +44,7 @@
                      <%=user.name%>
                   </td>
                   <td>
-                    <% if Follow.find_by_followed_and_follower(user.id, session[:user_id] ) %>
+                    <% if Follow.find_by_followed_id_and_follower_id(user.id, session[:user_id] ) %>
                       <%= link_to "Following", "/unfollow/#{user.id}?search_text=#{@search_text}", :method => :post %>
                     <% else %>
                       <%= link_to "Follow", "/follow/#{user.id}?search_text=#{@search_text}", :method => :post %>

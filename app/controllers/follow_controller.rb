@@ -21,7 +21,7 @@ class FollowController < ApplicationController
   def destroy
     follow_user = User.find(params["id"])
     @search_text = params[:search_text]
-    @follow = Follow.find_by_followed_and_follower(params[:id],session[:user_id])
+    @follow = Follow.find_by_followed_id_and_follower_id(params[:id],session[:user_id])
     if @follow.delete
       # flash[:notice] = "You unfollowed #{follow_user.user_name}"
       if @search_text

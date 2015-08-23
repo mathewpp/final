@@ -11,7 +11,7 @@
   </h4>
   <div class="container">
     <div class="row">
-      <div class="col-md-3 text-left">
+      <div class="col-md-3 text-left sky_blue">
          <% if session[:user_id] %>
           <% if  @user.photo_url != nil%>
              <p>
@@ -120,7 +120,7 @@
           </table>
           </p>
       </div>
-      <div class="col-md-3 text-right">
+      <div class="col-md-3 text-right sky_blue">
           <% if !session[:user_id] %>
           <p>
             <form method="get" action="/users/new">

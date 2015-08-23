@@ -1,7 +1,7 @@
 [
 {
 "user_name":"mathew",
-"password":"test",
+"password":"mathew",
 "email":"matt@twitter.com",
 "photo_url":"avatar2.jpeg",
 "name":"Mathew",
@@ -16,7 +16,7 @@
 "category":"edu"
 },
 {"user_name":"Stanford",
-"password":"Stanford",
+"password":"stanford",
 "email":"Stanford@Stanford.com",
 "photo_url":"https://pbs.twimg.com/profile_images/520246535632592896/N2cIW5h2_bigger.png",
 "name":"Stanford",
@@ -24,7 +24,7 @@
 },
 {
 "user_name":"UChicago",
-"password":"UChicago",
+"password":"uchicago",
 "email":"contact@uchicago.com",
 "photo_url":"https://pbs.twimg.com/profile_images/1113876768/twitter.image_bigger.jpg",
 "name":"UChicago",
@@ -64,7 +64,7 @@
 },
 {
 "user_name":"FinancialTimes",
-"password":"FinancialTimes",
+"password":"financialtimes",
 "email":"FinancialTimes@FinancialTimes.com",
 "photo_url":"https://pbs.twimg.com/profile_images/466976697120587776/R0Exfy1i_bigger.png",
 "name":"Financial Times",
@@ -72,7 +72,7 @@
 },
 {
 "user_name":"WSJ",
-"password":"WSJ",
+"password":"wsj",
 "email":"wsj@wsj.com",
 "photo_url":"https://pbs.twimg.com/profile_images/550753086814162945/NF0P32Dg_bigger.jpeg",
 "name":"Wall Street Journal",
@@ -80,7 +80,7 @@
 },
 {
 "user_name":"NYSE",
-"password":"NYSE",
+"password":"nyse",
 "email":"nyse@nyse.com",
 "photo_url":"https://pbs.twimg.com/profile_images/475972354594443264/IHllLz9M_bigger.png",
 "name":"NYSE",
