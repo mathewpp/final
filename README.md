@@ -31,8 +31,9 @@ Many To Many Relationship
 Users:
 --------------
 
-- All users are lower case and alpha numeric only. Passwords are set same as username for test purposes
-** - These are the test users :** mathew, mit, stanford, uchicago, cnn, google, facebook, worldbank, financialtimes, wsj, nyse, cmegroup
+- All users are lower case and alpha numeric only. 
+- These are the test users, passwords are set same as username for test purposes
+	mathew, mit, stanford, uchicago, cnn, google, facebook, worldbank, financialtimes, wsj, nyse, cmegroup
 
 Functionalities Supported
 --------------
