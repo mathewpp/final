@@ -28,8 +28,11 @@ Many To Many Relationship
 - Group and GroupUser tables are conceptually similar to Lists in twitter, but only added to get a better understanding of many to many implementation, the application does not yet use values of these in any form
 - User/Follow - another many to many without a relation table
 
-Users: (all users are lower case and alpha numeric only. Passwords are set same as username for test purposes)
-mathew, mit, stanford, uchicago, cnn, google, facebook, worldbank, financialtimes, wsj, nyse, cmegroup
+Users:
+--------------
+
+- All users are lower case and alpha numeric only. Passwords are set same as username for test purposes
+** - These are the test users :** mathew, mit, stanford, uchicago, cnn, google, facebook, worldbank, financialtimes, wsj, nyse, cmegroup
 
 Functionalities Supported
 --------------
