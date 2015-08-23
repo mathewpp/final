@@ -1,4 +1,4 @@
-README
+Readme
 ==============
 
 To run this Rails app on your laptop:
@@ -32,8 +32,8 @@ Users:
 --------------
 
 - All users are lower case and alpha numeric only. 
-- These are the test users, passwords are set same as username for test purposes
-	mathew, mit, stanford, uchicago, cnn, google, facebook, worldbank, financialtimes, wsj, nyse, cmegroup
+- These are the test users, passwords are set same as username for test purposes : 
+  - mathew, mit, stanford, uchicago, cnn, google, facebook, worldbank, financialtimes, wsj, nyse, cmegroup
 
 Functionalities Supported
 --------------
