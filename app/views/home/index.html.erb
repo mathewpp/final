@@ -15,7 +15,7 @@
          <% if session[:user_id] %>
           <% if  @user.photo_url != nil%>
              <p>
-              <%= image_tag @user.photo_url ,:title => 'avatar', :width => 50, :height => 50, :title => "avatar" %>
+              <%= image_tag @user.photo_url , :width => 50, :height => 50, :title => "avatar" %>
              </p> 
           <% end %>   
          <p>
@@ -27,9 +27,9 @@
 
           <table>
             <tr>
-              <td>Tweets&nbsp;</td>
-              <td>Following&nbsp;</td>
-              <td>Followers&nbsp;</td>
+              <th>Tweets&nbsp;</th>
+              <th>Following&nbsp;</th>
+              <th>Followers&nbsp;</th>
             </tr>
             <tr>  
               <td><%= link_to @user.tweets.count, "/tweets" %></td>
@@ -45,10 +45,6 @@
             <input type="submit" value="Tweet">
             <% end %>
            </p>
-
-           <div class="navbar-link">
-            <%= link_to "Click to find Users to follow!!!", "/users/find" %>
-           </div>  
     
         <% end %>  
       </div>
@@ -120,7 +116,7 @@
           </table>
           </p>
       </div>
-      <div class="col-md-3 text-right sky_blue">
+      <div class="col-md-3 text-left sky_blue">
           <% if !session[:user_id] %>
           <p>
             <form method="get" action="/users/new">
@@ -134,7 +130,28 @@
             <p>
               Users to follow:
             </p>
+            <table>
+            <tr>
+              <th>Name&nbsp;</th>
+              <th>Tweets&nbsp;</th>
+            </tr>
+            <% @followusers.each do |followuser| %>
+            <% if followuser != @user.name %>
+            <tr>  
+              <td><%= followuser.name %></td>
+              <td><%= link_to followuser.tweets.count, "/tweets/#{followuser.id}" %></td>
+            </tr>
+            <% end %>
+            <% end %>
+          </table>
           <% end %>
+
+          <div class="navbar-link">
+            <p>
+              <%= link_to "Click here to follow users!!!", "/users/find" %>
+            </p>
+           </div>  
+
       </div>
     </div>
 
