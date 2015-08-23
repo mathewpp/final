@@ -15,7 +15,7 @@
          <% if session[:user_id] %>
           <% if  @user.photo_url != nil%>
              <p>
-              <%= link_to image_tag(@user.photo_url, height: '50px'), "" %>
+              <%= image_tag @user.photo_url, :width => 50, :height => 50, :title => "avatar" %>
              </p> 
           <% end %>   
          <p>
