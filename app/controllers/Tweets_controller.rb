@@ -26,13 +26,9 @@ class TweetsController < ApplicationController
   end
 
    def index
-     if params[:id]
-        @tweets = User.find_by(id: params[:id]).tweets
-     else   
-       @tweets = User.find_by(id: session[:user_id]).tweets
-     end  
+     @tweetUser = User.find_by(id: session[:user_id])
+     @tweets = @tweetUser.tweets
      @tweets = @tweets.page(params[:page]).per(5)
-     render 'show'
    end
 
   def destroy
@@ -42,14 +38,12 @@ class TweetsController < ApplicationController
   end
 
   def show
-
     if params[:id]
       @tweetUser = User.find_by(id: params[:id])
-      @tweets = @tweetUser.tweets
     else   
       @tweetUser = User.find_by(id: session[:user_id])
-      @tweets = @tweetUser.tweets
     end  
+    @tweets = @tweetUser.tweets
     @tweets = @tweets.page(params[:page]).per(5)
   end
 
