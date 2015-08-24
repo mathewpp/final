@@ -6,15 +6,15 @@
 #
 
 #Uncomment this section for development environment
-# default: &default
-#   adapter: sqlite3
-#   pool: 5
-#   timeout: 5000
+default: &default
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
 
 #Uncomment this section for production/postgres environment
-default: &default
-  adapter: postgresql
-  encoding: unicode
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
 
 development:
   <<: *default

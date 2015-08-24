@@ -2,8 +2,8 @@ class FollowController < ApplicationController
 
    def create
     @follow = Follow.new
-    @follow.followed=params["id"]
-    @follow.follower=session[:user_id]
+    @follow.followed_id =params["id"]
+    @follow.follower_id =session[:user_id]
     follow_user = User.find(params["id"])
     @search_text = params[:search_text]
     if @follow.save
