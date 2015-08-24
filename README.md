@@ -34,6 +34,7 @@ Users:
 - User names must be alpha numeric and are stored in the application as lower case 
 - These are the test users, passwords are set same as username for test purposes : 
   - mathew, mit, stanford, uchicago, cnn, google, facebook, worldbank, financialtimes, wsj, nyse, cmegroup
+  - username mathew (password is mathew) should have test data for all functionalties
 
 Functionalities Supported
 --------------
