@@ -1001,3 +1001,112 @@ Processing by HomeController#index as HTML
   Rendered home/index.html.erb within layouts/application (40.1ms)
   [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 74]]
 Completed 200 OK in 76ms (Views: 72.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/logout" for ::1 at 2015-08-23 22:26:49 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 11ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-08-23 22:26:49 -0500
+Processing by HomeController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets"[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT  "tweets".* FROM "tweets" LIMIT 4 OFFSET 0
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 75]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "replies" WHERE "replies"."tweet_id" = ?  [["tweet_id", 237]]
+  [1m[36mReply Load (0.2ms)[0m  [1mSELECT "replies".* FROM "replies" WHERE "replies"."tweet_id" = ?[0m  [["tweet_id", 237]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 74]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 75]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "replies" WHERE "replies"."tweet_id" = ?  [["tweet_id", 238]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 75]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "replies" WHERE "replies"."tweet_id" = ?  [["tweet_id", 239]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 75]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "replies" WHERE "replies"."tweet_id" = ?  [["tweet_id", 240]]
+  Rendered home/index.html.erb within layouts/application (123.0ms)
+Completed 200 OK in 410ms (Views: 359.6ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-08-23 22:26:50 -0500
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-08-23 22:26:50 -0500
+
+
+Started GET "/assets/application.self-287e66e31e477fc3b84856890d6df38550b53ec97efc697f121bf7c4c4d6644b.css?body=1" for ::1 at 2015-08-23 22:26:50 -0500
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-08-23 22:26:50 -0500
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-08-23 22:26:50 -0500
+
+
+Started GET "/assets/bird-1c9e45f5c02cb8f7d10eb8b1c11e8ec49d6e95d92d157fd204e58ca275c5addd.gif" for ::1 at 2015-08-23 22:26:50 -0500
+
+
+Started GET "/sessions/new" for ::1 at 2015-08-23 22:27:05 -0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 205ms (Views: 196.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for ::1 at 2015-08-23 22:27:09 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RzScqOBhx9jYLRT6xUDfaiNRJ4fTYGThpzMRETkmYCinY0sOZJpOpvJm6125aqOV3cMmFKyMSZjG7VPXBM85mw==", "user_name"=>"mathew", "password"=>"[FILTERED]", "commit"=>"Let Me In!"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."user_name" = ? LIMIT 1[0m  [["user_name", "mathew"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 128ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/" for ::1 at 2015-08-23 22:27:09 -0500
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 74]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (id NOT IN (SELECT followed_id FROM follows WHERE follower_id = 74))  ORDER BY "users"."id" DESC LIMIT 5[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = ?  [["user_id", 74]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "follows" WHERE "follows"."follower_id" = ?[0m  [["follower_id", 74]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "follows" WHERE "follows"."followed_id" = ?  [["followed_id", 74]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets"[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT  "tweets".* FROM "tweets" LIMIT 4 OFFSET 0
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 75]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "replies" WHERE "replies"."tweet_id" = ?  [["tweet_id", 237]]
+  [1m[36mReply Load (0.2ms)[0m  [1mSELECT "replies".* FROM "replies" WHERE "replies"."tweet_id" = ?[0m  [["tweet_id", 237]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 74]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 75]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "replies" WHERE "replies"."tweet_id" = ?  [["tweet_id", 238]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 75]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "replies" WHERE "replies"."tweet_id" = ?  [["tweet_id", 239]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 75]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "replies" WHERE "replies"."tweet_id" = ?  [["tweet_id", 240]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = ?[0m  [["user_id", 79]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = ?  [["user_id", 80]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = ?[0m  [["user_id", 81]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = ?  [["user_id", 83]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = ?[0m  [["user_id", 84]]
+  Rendered home/index.html.erb within layouts/application (95.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 74]]
+Completed 200 OK in 136ms (Views: 124.2ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/logout" for ::1 at 2015-08-23 22:27:11 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 25ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-08-23 22:27:11 -0500
+Processing by HomeController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets"[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT  "tweets".* FROM "tweets" LIMIT 4 OFFSET 0
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 75]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "replies" WHERE "replies"."tweet_id" = ?  [["tweet_id", 237]]
+  [1m[36mReply Load (0.1ms)[0m  [1mSELECT "replies".* FROM "replies" WHERE "replies"."tweet_id" = ?[0m  [["tweet_id", 237]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 74]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 75]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "replies" WHERE "replies"."tweet_id" = ?  [["tweet_id", 238]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 75]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "replies" WHERE "replies"."tweet_id" = ?  [["tweet_id", 239]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 75]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "replies" WHERE "replies"."tweet_id" = ?  [["tweet_id", 240]]
+  Rendered home/index.html.erb within layouts/application (49.1ms)
+Completed 200 OK in 88ms (Views: 85.0ms | ActiveRecord: 1.5ms)
