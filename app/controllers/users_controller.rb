@@ -57,7 +57,7 @@ class UsersController < ApplicationController
     @search_text = params[:search_text]
     puts 'inside find'
     if @search_text
-      @users = User.where("user_name or name like ?", "%#{@search_text}%")
+      @users = User.where("name like ?", "%#{@search_text}%")
     end  
     render 'search_and_results'
   end
