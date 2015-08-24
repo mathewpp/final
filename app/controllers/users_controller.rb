@@ -27,7 +27,8 @@ class UsersController < ApplicationController
     if params[:photo_url] && params[:photo_url]  =~ URI::regexp
       @user.photo_url = params[:photo_url]
     else   
-      @user.photo_url = "avatar" + rand(1..4).to_s + ".jpeg"
+      #For now only one default profile picture if user did not provide any..
+      @user.photo_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCpsIUaW7-mVvrpYcplicOo_EEbVUUJfP379hY-bSCHyGCnkeJ"
       puts @user.photo_url
     end  
     if @user.save

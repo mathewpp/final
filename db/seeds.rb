@@ -8,6 +8,7 @@
 
 GroupUser.delete_all
 Group.delete_all
+DirectMessage.delete_all
 Tweet.delete_all
 Follow.delete_all
 User.delete_all
@@ -17,6 +18,7 @@ tweet_data = JSON.parse(open('db/tweets.json').read)
 group_data = JSON.parse(open('db/groups.json').read)
 group_user_data = JSON.parse(open('db/groupuser.json').read)
 follow_data = JSON.parse(open('db/follow.json').read)
+message_data = JSON.parse(open('db/message.json').read)
 
 user_data.each do |user_hash|
   user = User.new
@@ -57,4 +59,13 @@ follow_data.each do |follow_hash|
   follow.followed_id =  User.find_by(user_name: follow_hash['followed'].downcase).id
   follow.follower_id = User.find_by(user_name: follow_hash['follower'].downcase).id
   follow.save
+end
+
+message_data.each do |message_hash|
+  directMessage = DirectMessage.new
+  directMessage.message = message_hash['message']
+  directMessage.sender_id =  User.find_by(user_name: message_hash['sender'].downcase).id
+  directMessage.receiver_id = User.find_by(user_name: message_hash['receiver'].downcase).id
+  directMessage.create_time = message_hash['create_time']
+  directMessage.save
 end
