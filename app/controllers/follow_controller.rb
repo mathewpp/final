@@ -9,7 +9,7 @@ class FollowController < ApplicationController
     if @follow.save
       # flash[:notice] = "You are following #{follow_user.user_name}<br>"
       if @search_text
-        @users = User.where("user_name or name like ?", "%#{@search_text}%")
+        @users = User.where("name like ?", "%#{@search_text}%")
       end  
       render 'users/search_and_results'
     else
