@@ -25,7 +25,7 @@ class FollowController < ApplicationController
     if @follow.delete
       # flash[:notice] = "You unfollowed #{follow_user.user_name}"
       if @search_text
-        @users = User.where("user_name or name like ?", "%#{@search_text}%")
+        @users = User.where("name like ?", "%#{@search_text}%")
       end  
       render 'users/search_and_results'
     else
